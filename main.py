@@ -21,6 +21,7 @@ def main():
             if event.type == pygame.QUIT:
                 return
         screen.fill(color="black")
+        player.update(dt)
         player.draw(screen)
         pygame.display.flip()
         # set framerate to 60 and save time that has passed since last call to
