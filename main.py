@@ -14,6 +14,10 @@ def main():
     dt = 0
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
+
+    updateable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updateable, drawable)
     player = Player(x, y)
 
     while True:
@@ -21,8 +25,9 @@ def main():
             if event.type == pygame.QUIT:
                 return
         screen.fill(color="black")
-        player.update(dt)
-        player.draw(screen)
+        updateable.update(dt)
+        for item in drawable:
+            item.draw(screen)
         pygame.display.flip()
         # set framerate to 60 and save time that has passed since last call to
         # tick to dt in milliseconds
